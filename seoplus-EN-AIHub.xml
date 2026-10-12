@@ -767,6 +767,22 @@ footer a{transition:color .2s}
  .HeaderBg,.HeaderBOT #menu ul li,#ahubTheme,#clicksearch,#navMopile{transition:none!important}
 }
 
+/* ═══════ AI Hub Design v3 — فهرس المقال (ميزة النسخة المدفوعة) ═══════ */
+.topcs7v{border:1px solid var(--ahub-line)!important;border-top-color:var(--ahub-line)!important;border-radius:14px;background:var(--ahub-badge);margin:20px 0 24px}
+.toctitle{font-weight:600;font-size:15.5px;letter-spacing:.1px}
+.toctitle:before{color:var(--minColor);font-weight:700;transition:color .2s}
+.toctitle:hover:before{color:var(--hoverColor)}
+.toctitle:after{content:'show';font-family:inherit;font-size:11.5px;line-height:1;padding:4px 9px;border:1px solid var(--ahub-line);border-radius:999px;opacity:.8;position:absolute;right:15px;top:50%;transform:translateY(-50%);text-transform:uppercase;letter-spacing:.4px}
+.closed .toctitle:after{content:'hide'}
+#tocList{padding:6px 20px 16px;margin:0}
+#tocList li{list-style:decimal inside;font-size:14.5px;line-height:1.75;padding:1px 0;color:var(--ahub-muted)}
+#tocList li a{color:var(--ahub-ink);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
+#tocList li a:hover{border-bottom-color:var(--minColor);color:var(--minColor);text-decoration:none}
+#tocList li::marker{color:var(--minColor);font-weight:700}
+.toctitle:focus-visible{outline:2px solid var(--minColor);outline-offset:-2px}
+@media (max-width:640px){.topcs7v{margin:16px 0 20px}.toctitle{height:50px;font-size:15px}#tocList li{font-size:14px}}
+@media (prefers-reduced-motion:reduce){.toctitle:before,#tocList li a{transition:none!important}}
+
 /* ═══════ AI Hub Design v1 — نهاية ═══════ */
 ]]></b:skin>
 
@@ -2315,6 +2331,67 @@ textarea.code{min-height:200px;resize:vertical;width:100%;border-radius:3px;padd
     }
   }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
+})();
+
+/* ===== AI Hub TOC v1 — فهرس محتويات تلقائي (يبني على كود القالب الأصلي) ===== */
+(function(){
+  try{
+    var host=document.getElementById('tocDiv');
+    var body=document.querySelector('.post-body');
+    if(!host||!body) return;
+    var hs=body.querySelectorAll('h2'), lis='', n=0, k, h, txt, tEl, id;
+    for(k=0;k<hs.length;k++){
+      h=hs[k];
+      if(h.className && h.className.indexOf('ahub-h2-no-num')>-1) continue;
+      tEl=h.querySelector('.ahub-t');
+      txt=(tEl? tEl.textContent : h.textContent).replace(/\s+/g,' ').trim();
+      if(!tEl) txt=txt.replace(/^\d+[\.\)]?\s*/,'');
+      if(!txt) continue;
+      if(!h.id){ h.id='ahub-toc-'+n; }
+      n++;
+      lis+='<li><a class="ScrolingToTarget" href="#'+h.id+'">'+txt+'</a></li>';
+    }
+    if(n<3) return;
+    host.innerHTML='<div class="topcs7v"><button aria-controls="tocList" aria-expanded="false" class="toctitle" type="button">Table of contents</button><ol id="tocList">'+lis+'</ol></div>';
+    var wrap=host.firstChild, ttl=wrap.firstChild;
+    function toggle(){
+      var opened=wrap.classList.toggle('closed');
+      ttl.setAttribute('aria-expanded', opened? 'true':'false');
+    }
+    ttl.addEventListener('click', toggle);
+    ttl.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+    var links=host.querySelectorAll('.ScrolingToTarget');
+    for(k=0;k<links.length;k++){
+      links[k].addEventListener('click', function(e){
+        e.preventDefault();
+        var href=this.getAttribute('href'), t=document.getElementById(href.slice(1));
+        if(!t) return;
+        var y=t.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop||0)-118;
+        try{ window.scrollTo({top:y,behavior:'smooth'}); }catch(x){ window.scrollTo(0,y); }
+        try{ if(history.replaceState) history.replaceState(null,'',href); }catch(x){}
+      });
+    }
+    /* نقل الفهرس بعد صندوق «الإجابة السريعة» ليظهر تحت الصورة والملخّص */
+    var anchor=body.querySelector('.ahub-key')||body.querySelector('p');
+    if(anchor && anchor.parentNode && anchor.nextSibling){ anchor.parentNode.insertBefore(host, anchor.nextSibling); }
+  }catch(e){}
+})();
+
+/* ===== AI Hub Images v1 — تحسين صور المقال تلقائيًا (سرعة + وصولية) ===== */
+(function(){
+  try{
+    var b=document.querySelector('.post-body'); if(!b) return;
+    var imgs=b.querySelectorAll('img'), i, im, alt=(document.title||'AI Hub').split('|')[0].trim();
+    for(i=0;i<imgs.length;i++){
+      im=imgs[i];
+      if(i===0){ try{ im.setAttribute('fetchpriority','high'); }catch(e){} }
+      else{
+        if(!im.getAttribute('loading')) im.setAttribute('loading','lazy');
+        if(!im.getAttribute('decoding')) im.setAttribute('decoding','async');
+      }
+      if(!im.getAttribute('alt')) im.setAttribute('alt', alt);
+    }
+  }catch(e){}
 })();
 //]]></script>
 <!-- ═══════ نهاية AI Hub Auto-Enhance ═══════ -->
