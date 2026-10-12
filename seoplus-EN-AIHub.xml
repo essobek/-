@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'><b:attr name='xmlns' value=''/><b:attr name='xmlns:b' value=''/><b:attr name='xmlns:expr' value=''/><b:attr name='xmlns:data' value=''/>
   <head>
+    <script>/*<![CDATA[*/(function(){try{var k='ahub-theme',s=localStorage.getItem(k),d=s?s==='dark':(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches),r=document.documentElement;r.setAttribute('data-ahub-theme',d?'dark':'light');if(d)r.setAttribute('mode','dark');}catch(e){}})();/*]]>*/</script>
+
 
 
     <!-- Default Meta -->
@@ -689,6 +691,82 @@ aside .post-frome-tag .headline .Lapel-Link,footer .post-frome-tag .headline .La
   .post-body,.entry-content{font-size:16.5px}
   .ahub-h2,.ahub-h2-no-num,.post-body h2:not([class]){font-size:20px}
 }
+/* ═══════ AI Hub Design v2 — خلفية ورقية + هيدر زجاجي + وضع ليلي + فوتر ═══════ */
+:root{
+ --ahub-bg:#FBF3E0;--ahub-card:#FFFDF6;--ahub-ink:#15161C;--ahub-muted:#5B5C66;
+ --ahub-line:rgba(21,22,28,.10);--ahub-th:#4F46E5;--ahub-th-fg:#fff;
+ --ahub-tex:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27160%27%20height%3D%27160%27%3E%3Cfilter%20id%3D%27n%27%20x%3D%270%27%20y%3D%270%27%20width%3D%27100%25%27%20height%3D%27100%25%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.85%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20type%3D%27matrix%27%20values%3D%270%200%200%200%200.38%200%200%200%200%200.30%200%200%200%200%200.12%200%200%200%200.055%200%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27160%27%20height%3D%27160%27%20filter%3D%27url%28%23n%29%27%2F%3E%3C%2Fsvg%3E");
+ --ahub-key-grad:linear-gradient(180deg,#F1EEFF,#FFFCF3);
+ --ahub-cta:linear-gradient(135deg,#4f46e5,#06b6d4);
+ --ahub-glass:rgba(255,250,238,.82);--ahub-glass-solid:#FDF8EC;
+ --ahub-foot:linear-gradient(180deg,rgba(255,252,244,.92),rgba(249,241,224,.96));
+ --ahub-badge:rgba(21,22,28,.05);
+ --MinBgColor:#FFFDF6;
+}
+:root body.dark-mode,html[data-ahub-theme="dark"]:root body{
+ --ahub-bg:#14161F;--ahub-card:#1B1E2B;--ahub-ink:#E9EBF3;--ahub-muted:#A7ABC0;
+ --ahub-line:rgba(255,255,255,.12);--ahub-th:#2A2F4E;--ahub-th-fg:#EDEFFF;
+ --ahub-tex:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27160%27%20height%3D%27160%27%3E%3Cfilter%20id%3D%27n%27%20x%3D%270%27%20y%3D%270%27%20width%3D%27100%25%27%20height%3D%27100%25%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.85%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20type%3D%27matrix%27%20values%3D%270%200%200%200%200.90%200%200%200%200%200.88%200%200%200%200%200.78%200%200%200%200.035%200%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27160%27%20height%3D%27160%27%20filter%3D%27url%28%23n%29%27%2F%3E%3C%2Fsvg%3E");
+ --ahub-key-grad:linear-gradient(180deg,#20243B,#191C29);
+ --ahub-cta:linear-gradient(135deg,#3B3AA6,#0E7C96);
+ --ahub-glass:rgba(18,20,29,.78);--ahub-glass-solid:#161923;
+ --ahub-foot:linear-gradient(180deg,#181B26,#13151D);
+ --ahub-badge:rgba(255,255,255,.07);
+ --MinBgColor:#1B1E2B;
+}
+/* --- خلفية ورق الزبدة (خفيفة: بلا التصاق ثابت، بلا صور خارجية) --- */
+html{background-color:var(--ahub-bg)}
+body{background-color:var(--ahub-bg)!important;background-image:var(--ahub-tex)!important;background-repeat:repeat!important;background-attachment:scroll!important}
+/* --- هيدر زجاجي عصري --- */
+.HeaderBg{background:var(--ahub-glass)!important;border-bottom:1px solid var(--ahub-line);box-shadow:0 4px 22px rgba(24,18,4,.055)!important}
+@supports ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){
+ .HeaderBg{-webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px)}
+}
+@supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){
+ .HeaderBg{background:var(--ahub-glass-solid)!important}
+}
+.HeaderTOP{border-bottom:1px solid var(--ahub-line)}
+.HeaderBOT #menu ul li>a{font-weight:600;letter-spacing:.1px}
+.HeaderBOT #menu ul li{transition:color .2s linear}
+#clicksearch,#navMopile{border-radius:10px!important;transition:background .2s,border-color .2s}
+#clicksearch:hover,#navMopile:hover{background:var(--minColor)!important}
+#clicksearch:hover svg,#navMopile:hover svg{stroke:#fff}
+/* --- زر الوضع الليلي --- */
+#ahubTheme.sp-theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;min-width:34px;margin-inline-start:8px;padding:0;border:1px solid var(--ahub-line);border-radius:10px;background:var(--ahub-badge);color:var(--HColor);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+#ahubTheme svg{width:17px;height:17px;display:block}
+#ahubTheme:hover{background:var(--minColor);border-color:var(--minColor);color:#fff}
+/* --- الفوتر: هوية ورقية نظيفة --- */
+footer{background:var(--ahub-foot);border-top:1px solid var(--ahub-line)}
+.bottom-footer{border-top:1px solid var(--ahub-line);padding:14px 0}
+.yemen a[title="SeoPlus Template"]{font-size:12.5px!important;line-height:1.6;padding:2px 9px;border:1px solid var(--ahub-line);border-radius:999px;background:var(--ahub-badge);opacity:.9;margin-inline-start:6px}
+footer .widget .title,footer h2.title{font-weight:700;letter-spacing:.2px}
+footer a{transition:color .2s}
+/* --- مكوّنات المقال: تحويل الألوان إلى متغيرات (تعمل تلقائيًا في الوضع الليلي) --- */
+.ahub-byline{background:var(--ahub-badge);border-color:var(--ahub-line);color:var(--ahub-muted)}
+.ahub-byline b{color:var(--ahub-ink)}
+.ahub-key{background:var(--ahub-key-grad);border-color:rgba(79,70,229,.35)}
+.ahub-tip{background:rgba(245,158,11,.10);border-color:rgba(245,158,11,.35)}
+.ahub-tbl-wrap,.post-body table,.entry-content table{border-color:var(--ahub-line)}
+.post-body table th,.entry-content table th,table.ahub-tbl th{background:var(--ahub-th);color:var(--ahub-th-fg)}
+.post-body table td,.entry-content table td,table.ahub-tbl td{border-top-color:var(--ahub-line)}
+.post-body table tr:nth-child(even) td,table.ahub-tbl tr:nth-child(even) td{background:rgba(127,127,127,.055)}
+.post-body details,.ahub-faq details{border-color:var(--ahub-line);background:transparent}
+.post-body summary,.ahub-faq summary{background:var(--ahub-badge);color:var(--ahub-ink)}
+.post-body details[open] summary{background:rgba(79,70,229,.12)}
+.ahub-src{background:transparent;border-color:var(--ahub-line)}
+.ahub-cta{background:var(--ahub-cta)}
+.post-body img{border-radius:12px;box-shadow:0 6px 22px rgba(24,18,4,.10)}
+.post-body,.entry-content{color:var(--ahub-ink)}
+/* --- الأداء وتجربة الهاتف --- */
+@media (max-width:640px){
+ .HeaderBg{-webkit-backdrop-filter:saturate(160%) blur(10px);backdrop-filter:saturate(160%) blur(10px)}
+ #ahubTheme.sp-theme-toggle{width:32px;height:32px;min-width:32px;margin-inline-start:6px}
+}
+@media (hover:none){#clicksearch:hover,#ahubTheme:hover{background:var(--ahub-badge)}}
+@media (prefers-reduced-motion:reduce){
+ .HeaderBg,.HeaderBOT #menu ul li,#ahubTheme,#clicksearch,#navMopile{transition:none!important}
+}
+
 /* ═══════ AI Hub Design v1 — نهاية ═══════ */
 ]]></b:skin>
 
@@ -1242,6 +1320,8 @@ textarea.code{min-height:200px;resize:vertical;width:100%;border-radius:3px;padd
     <b:if cond='data:blog.adsenseClientId'>&lt;!--</b:if>&lt;/head&gt;&lt;!--</head><b:if cond='!data:blog.adsenseClientId'>--&gt;</b:if>
 
   <body expr:class='data:blog.languageDirection' expr:data-id='data:blog.blogId'>
+  <script>/*<![CDATA[*/try{if(document.documentElement.getAttribute('data-ahub-theme')==='dark')document.body.classList.add('dark-mode');}catch(e){}/*]]>*/</script>
+
     <b:class cond='data:view.isHomepage' name='home'/>
     <b:class cond='data:view.isSingleItem' name='post'/>
     <b:class cond='data:view.isMultipleItems' name='lapel'/>
@@ -1287,6 +1367,8 @@ textarea.code{min-height:200px;resize:vertical;width:100%;border-radius:3px;padd
                 <label aria-label='main menu' class='open nav1' for='NavM' id='navMopile' onclick='openSidenav()'><svg class='line' viewBox='0 0 24 24'><line x1='3' x2='21' y1='12' y2='12'/><line x1='3' x2='21' y1='5' y2='5'/><line x1='3' x2='21' y1='19' y2='19'/></svg></label>
                 <b:include name='HeaderLogo'/>
                 <b:include name='HeaderLinks'/>
+                <button aria-label='Toggle dark mode' aria-pressed='false' class='sp-theme-toggle' id='ahubTheme' title='Dark mode' type='button'><svg viewBox='0 0 24 24' aria-hidden='true'><use href='#ic-ahub-moon'/></svg></button>
+                <svg class='hide' aria-hidden='true' style='display:none'><symbol id='ic-ahub-moon' viewBox='0 0 24 24'><path d='M20.4 14.6A8.6 8.6 0 0 1 9.4 3.6a8.6 8.6 0 1 0 11 11z' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round'/></symbol><symbol id='ic-ahub-sun' viewBox='0 0 24 24'><circle cx='12' cy='12' r='4' fill='none' stroke='currentColor' stroke-width='1.9'/><path d='M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round'/></symbol></svg>
                 <label aria-label='search' class='search' for='NavC' id='clicksearch'><svg class='line'><use href='#ic-search'/></svg></label>
               </div>
             </div>
@@ -2122,7 +2204,7 @@ textarea.code{min-height:200px;resize:vertical;width:100%;border-radius:3px;padd
         <div class='bottom-footer'>
           <div class='container'>
             <div class='yemen'>
-              <span>all rights are save &#169;</span><a expr:href='data:blog.homepageUrl' id='7qok' target='_blank'><data:blog.title/></a>
+              <span>All rights reserved &#169;</span><a expr:href='data:blog.homepageUrl' id='7qok' target='_blank'><data:blog.title/></a>
             </div>
             <div class='shmal'>
               <b:section id='footer-social' maxwidgets='1' showaddelement='no'>
@@ -2194,6 +2276,45 @@ textarea.code{min-height:200px;resize:vertical;width:100%;border-radius:3px;padd
     }catch(e){}
   }
   if(document.readyState!=='loading'){ run(); } else { document.addEventListener('DOMContentLoaded', run); }
+})();
+
+/* ===== AI Hub Theme Toggle v1 (وضع ليلي/نهاري + حفظ الاختيار) ===== */
+(function(){
+  var KEY='ahub-theme';
+  function paint(mode){
+    var dark = mode==='dark', b=document.body, r=document.documentElement;
+    if(b){ b.classList.toggle('dark-mode', dark); }
+    if(dark){ r.setAttribute('mode','dark'); r.setAttribute('data-ahub-theme','dark'); }
+    else { r.removeAttribute('mode'); r.setAttribute('data-ahub-theme','light'); }
+    var btn=document.getElementById('ahubTheme');
+    if(btn){
+      var u=btn.querySelector('use');
+      if(u){ u.setAttribute('href', dark? '#ic-ahub-sun':'#ic-ahub-moon'); u.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href', dark? '#ic-ahub-sun':'#ic-ahub-moon'); }
+      btn.setAttribute('aria-pressed', dark? 'true':'false');
+      btn.setAttribute('title', dark? 'Light mode':'Dark mode');
+    }
+    var meta=document.querySelector('meta[name="theme-color"]');
+    if(meta){ meta.setAttribute('content', dark? '#14161F':'#FBF3E0'); }
+  }
+  window.ahubTheme=function(mode){ try{localStorage.setItem(KEY,mode);}catch(e){} paint(mode); };
+  function init(){
+    var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+    paint(saved || document.documentElement.getAttribute('data-ahub-theme') || 'light');
+    var btn=document.getElementById('ahubTheme');
+    if(btn && !btn.dataset.bound){
+      btn.dataset.bound='1';
+      btn.addEventListener('click', function(){
+        var isDark=document.body.classList.contains('dark-mode');
+        window.ahubTheme(isDark? 'light':'dark');
+      });
+    }
+    if(window.matchMedia){
+      var mq=window.matchMedia('(prefers-color-scheme: dark)');
+      var h=function(e){ var s=null; try{s=localStorage.getItem(KEY);}catch(x){} if(!s) paint(e.matches?'dark':'light'); };
+      if(mq.addEventListener) mq.addEventListener('change',h); else if(mq.addListener) mq.addListener(h);
+    }
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
 })();
 //]]></script>
 <!-- ═══════ نهاية AI Hub Auto-Enhance ═══════ -->
