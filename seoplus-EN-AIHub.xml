@@ -783,6 +783,107 @@ footer a{transition:color .2s}
 @media (max-width:640px){.topcs7v{margin:16px 0 20px}.toctitle{height:50px;font-size:15px}#tocList li{font-size:14px}}
 @media (prefers-reduced-motion:reduce){.toctitle:before,#tocList li a{transition:none!important}}
 
+/* ═══════ AI Hub Design v4 — نظام قياسات هندسي (شبكة 4px) ═══════ */
+:root{
+ --u1:4px;--u2:8px;--u3:12px;--u4:16px;--u5:20px;--u6:24px;--u8:32px;
+ --r-1:8px;--r-2:12px;--r-3:16px;
+ --ctl:40px;--ctl-ico:18px;--ctl-gap:8px;--icow:1.8;
+}
+@media (pointer:coarse){:root{--ctl:44px;--ctl-ico:20px;--ctl-gap:10px}}
+
+/* ① أزرار الهيدر: صندوق واحد موحّد + مجموعة واحدة */
+.ahub-hctl{display:flex;align-items:center;gap:var(--ctl-gap);flex-shrink:0}
+#clicksearch,.open.nav1,#ahubTheme{
+ width:var(--ctl)!important;height:var(--ctl)!important;min-width:var(--ctl)!important;
+ border-radius:var(--r-2)!important;border:1px solid var(--ahub-line)!important;
+ background:var(--HbgIcon)!important;color:var(--HCoIcon);
+ padding:0!important;margin:0!important;box-sizing:border-box;
+ align-items:center;justify-content:center;
+ transition:background .2s linear,border-color .2s linear,color .2s linear;
+}
+#clicksearch svg,.open.nav1 svg,#ahubTheme svg{width:var(--ctl-ico)!important;height:var(--ctl-ico)!important;display:block}
+#clicksearch svg,.open.nav1 svg{stroke-width:var(--icow)!important}
+#ahubTheme svg{stroke-width:var(--icow)}
+@media (hover:hover){
+ #clicksearch:hover,.open.nav1:hover,#ahubTheme:hover{background:var(--minColor)!important;border-color:var(--minColor)!important;color:#fff!important}
+ #clicksearch:hover svg,.open.nav1:hover svg{stroke:#fff!important}
+}
+@media (hover:none){
+ #clicksearch:hover,.open.nav1:hover,#ahubTheme:hover{background:var(--HbgIcon)!important;border-color:var(--ahub-line)!important;color:var(--HCoIcon)!important}
+ #ahubTheme:active{transform:scale(.96)}
+}
+
+/* ② الشريط العلوي 35px: عناصر بنفس الإيقاع */
+.HeaderTOP li{padding:var(--u1) 6px!important;border-radius:var(--r-1)!important}
+#pages ul a{padding:var(--u1) 10px!important;border-radius:var(--r-1)!important}
+.HeaderTOP .social-static.social li a{display:flex;align-items:center;justify-content:center;min-width:28px;min-height:28px;border-radius:var(--r-1)}
+.HeaderTOP .social-static.social li a svg{width:16px;height:16px}
+
+/* ③ القائمة العلوية: إيقاع موحّد + خط سفلي عند المرور (بلا إزاحة) */
+.HeaderBOT #menu ul li{margin-right:var(--u4)!important}
+.HeaderBOT #menu ul li:last-child{margin-right:0!important}
+.HeaderBOT #menu ul li>a{text-underline-offset:6px;text-decoration-thickness:2px}
+.HeaderBOT #menu ul li:hover>a{text-decoration:underline}
+
+/* ④ صندوق البحث: مقاسات على الشبكة */
+#BlogSearch2 input{height:60px;padding:var(--u3) 56px;font-size:16px}
+div#BlogSearch2 .sp{padding:0 var(--u4)}
+label.searchC{min-width:52px;min-height:60px;padding:0 var(--u4)}
+
+/* ⑤ مكوّنات المقال: شبكة موحّدة (نصف قطر + حشوة + إيقاع) */
+.ahub-byline{border-radius:var(--r-3);padding:var(--u4);gap:var(--u3)}
+.ahub-badge{width:40px;height:40px;font-size:14px}
+.ahub-key{border-radius:var(--r-3);padding:var(--u6) var(--u5) var(--u4);margin:var(--u2) 0 var(--u6)}
+.ahub-key-label{top:-12px;inset-inline-start:var(--u4);padding:var(--u1) var(--u3)}
+.ahub-tip{border-radius:var(--r-3);padding:var(--u1) var(--u4)}
+.ahub-h2,.ahub-h2-no-num{margin:36px 0 var(--u4)}
+.ahub-num{flex:0 0 36px;width:36px;height:36px;border-radius:var(--r-1)}
+.ahub-h3{margin:var(--u6) 0 var(--u2);padding-inline-start:var(--u3)}
+.ahub-tbl-wrap{border-radius:var(--r-3);margin:var(--u5) 0}
+.post-body table th,.entry-content table th{padding:var(--u3) var(--u4)}
+.post-body table td,.entry-content table td{padding:var(--u3) var(--u4)}
+.post-body details,.ahub-faq details{border-radius:var(--r-2);margin:var(--u3) 0}
+.post-body summary,.ahub-faq summary{padding:var(--u3) var(--u4);min-height:48px;display:flex;align-items:center;gap:var(--u2)}
+.ahub-a{padding-top:var(--u3)}
+.ahub-src{border-radius:var(--r-3);padding:var(--u4) var(--u4) 6px;margin:var(--u5) 0}
+.ahub-cta{border-radius:var(--r-3);padding:var(--u6) var(--u5) var(--u5);margin:var(--u8) 0 var(--u3)}
+.post-body img{border-radius:var(--r-3)}
+.topcs7v{border-radius:var(--r-3)}
+.toctitle{height:52px;padding:0 var(--u4)}
+#tocList{padding:var(--u2) var(--u5) var(--u5)}
+#tocList li{padding:6px 0;font-size:15px}
+.yemen a[title="SeoPlus Template"]{padding:var(--u1) var(--u3)}
+
+/* ⑥ هاتف: مقاسات أصغر بنفس الشبكة */
+@media (max-width:992px){
+ .HBOTC{gap:var(--ctl-gap)}
+ #logo{width:auto!important;flex:1 1 auto!important;min-width:0!important;max-width:calc(100% - 152px)}
+ #logo img{max-width:100%;max-height:52px;height:auto}
+}
+@media (max-width:640px){
+ .ahub-byline{padding:14px;border-radius:var(--r-2);gap:var(--u3)}
+ .ahub-badge{width:36px;height:36px;font-size:13px}
+ .ahub-key{padding:var(--u5) var(--u4) 14px;border-radius:var(--r-2)}
+ .ahub-h2,.ahub-h2-no-num{margin:var(--u8) 0 14px}
+ .ahub-num{flex:0 0 32px;width:32px;height:32px;font-size:14px}
+ .post-body table th,.post-body table td{padding:10px var(--u3)}
+ .post-body summary,.ahub-faq summary{padding:var(--u3) 14px}
+ .ahub-cta{padding:var(--u5) var(--u4) var(--u4)}
+ .ahub-src{padding:14px 14px var(--u1)}
+ .toctitle{height:48px;padding:0 14px}
+ #tocList{padding:6px var(--u4) var(--u4)}
+}
+
+/* ⑦ وصولية: حلقة تركيز موحّدة + احترام تقليل الحركة */
+#ahubTheme:focus-visible,#clicksearch:focus-visible,.open.nav1:focus-visible,
+.HeaderBOT #menu a:focus-visible,#pages ul a:focus-visible,.toctitle:focus-visible,
+.post-body summary:focus-visible,.post-body a:focus-visible,footer a:focus-visible{
+ outline:2px solid var(--minColor);outline-offset:2px;border-radius:var(--r-1);
+}
+@media (prefers-reduced-motion:reduce){
+ .ahub-hctl *,#clicksearch,.open.nav1,#ahubTheme{transition:none!important;transform:none!important}
+}
+
 /* ═══════ AI Hub Design v1 — نهاية ═══════ */
 ]]></b:skin>
 
@@ -1383,9 +1484,12 @@ textarea.code{min-height:200px;resize:vertical;width:100%;border-radius:3px;padd
                 <label aria-label='main menu' class='open nav1' for='NavM' id='navMopile' onclick='openSidenav()'><svg class='line' viewBox='0 0 24 24'><line x1='3' x2='21' y1='12' y2='12'/><line x1='3' x2='21' y1='5' y2='5'/><line x1='3' x2='21' y1='19' y2='19'/></svg></label>
                 <b:include name='HeaderLogo'/>
                 <b:include name='HeaderLinks'/>
-                <button aria-label='Toggle dark mode' aria-pressed='false' class='sp-theme-toggle' id='ahubTheme' title='Dark mode' type='button'><svg viewBox='0 0 24 24' aria-hidden='true'><use href='#ic-ahub-moon'/></svg></button>
-                <svg class='hide' aria-hidden='true' style='display:none'><symbol id='ic-ahub-moon' viewBox='0 0 24 24'><path d='M20.4 14.6A8.6 8.6 0 0 1 9.4 3.6a8.6 8.6 0 1 0 11 11z' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round'/></symbol><symbol id='ic-ahub-sun' viewBox='0 0 24 24'><circle cx='12' cy='12' r='4' fill='none' stroke='currentColor' stroke-width='1.9'/><path d='M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round'/></symbol></svg>
-                <label aria-label='search' class='search' for='NavC' id='clicksearch'><svg class='line'><use href='#ic-search'/></svg></label>
+                <div class='ahub-hctl'>
+<button aria-label='Toggle dark mode' aria-pressed='false' class='sp-theme-toggle' id='ahubTheme' title='Dark mode' type='button'><svg viewBox='0 0 24 24' aria-hidden='true'><use href='#ic-ahub-moon'/></svg></button>
+<label aria-label='search' class='search' for='NavC' id='clicksearch'><svg class='line'><use href='#ic-search'/></svg></label>
+</div>
+<svg class='hide' aria-hidden='true' style='display:none'><symbol id='ic-ahub-moon' viewBox='0 0 24 24'><path d='M20.4 14.6A8.6 8.6 0 0 1 9.4 3.6a8.6 8.6 0 1 0 11 11z' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linejoin='round'/></symbol><symbol id='ic-ahub-sun' viewBox='0 0 24 24'><circle cx='12' cy='12' r='4' fill='none' stroke='currentColor' stroke-width='1.9'/><path d='M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6' fill='none' stroke='currentColor' stroke-width='1.9' stroke-linecap='round'/></symbol></svg>
+
               </div>
             </div>
           </div>
